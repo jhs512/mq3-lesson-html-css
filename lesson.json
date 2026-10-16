@@ -1,0 +1,233 @@
+{
+  "schema_version": 1,
+  "id": "html-css",
+  "revision": "v1.0.0",
+  "title": "HTML·CSS와 접근 가능한 화면",
+  "description": "의미 있는 태그와 배치 규칙으로 화면을 만들어요.",
+  "sources": [
+    "https://slog.gg/p/14149"
+  ],
+  "sections": [
+    {
+      "id": "reading-1",
+      "title": "태그의 의미와 입력의 이름",
+      "body": "HTML은 화면 내용의 구조를 표현해요.\n제목은 h1, 목록은 ul과 li를 사용해요.\n동작은 button, 이동은 a로 표현하세요.\n입력에는 연결된 label을 붙여요.\nlabel의 for와 input의 id가 같아야 해요.\n조심하세요. placeholder는 label을 대신하지 못해요.\n키보드 Tab으로도 입력과 버튼에 갈 수 있어야 해요.\n개발자 도구에서 요소와 접근성 이름을 확인해요.\n"
+    },
+    {
+      "id": "reading-2",
+      "title": "크기와 배치를 분리하기",
+      "body": "CSS는 선택한 요소의 모양을 정해요.\npadding은 안쪽, margin은 바깥 여백이에요.\nbox-sizing: border-box로 크기를 예측해요.\nflex는 한 방향, grid는 행과 열 배치에 유용해요.\n먼저 한 카드를 만든 뒤 두 개를 배치하세요.\n화면 폭을 줄여서 줄바꿈도 확인해요.\n고정 폭만 사용하면 작은 화면에서 넘칠 수 있어요.\n"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "semantic-form",
+      "title": "이름이 있는 입력 화면",
+      "goal": "h1에 `명언 등록`을 표시하세요.\nlabel `명언`을 id=content 입력에 연결하세요.\nlabel `작가`를 id=author 입력에 연결하세요.\n`등록` submit 버튼과 목록 ul#quotes를 만드세요.",
+      "language": "web",
+      "entry_file": "index.html",
+      "starter_code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style></style>\n<body>\n<main><!-- 제목과 폼을 작성하세요. --></main>\n</body></html>\n",
+      "solution": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style></style>\n<body>\n<!-- 문서의 목적을 제목으로 알려줘요. -->\n<main><h1>명언 등록</h1>\n<form>\n  <!-- label과 id를 연결하면 클릭과 키보드 사용을 도와줘요. -->\n  <label for=\"content\">명언</label><input id=\"content\" required>\n  <label for=\"author\">작가</label><input id=\"author\" required>\n  <button type=\"submit\">등록</button>\n</form><ul id=\"quotes\"></ul></main>\n</body></html>\n",
+      "files": {},
+      "tests": [],
+      "web_checks": [
+        {
+          "kind": "text",
+          "selector": "h1",
+          "pattern": "^명언 등록$"
+        },
+        {
+          "kind": "attribute",
+          "selector": "label[for=\"content\"]",
+          "name": "for",
+          "value": "content"
+        },
+        {
+          "kind": "text",
+          "selector": "label[for=\"author\"]",
+          "pattern": "작가"
+        },
+        {
+          "kind": "count",
+          "selector": "input#content",
+          "value": 1
+        },
+        {
+          "kind": "count",
+          "selector": "input#author",
+          "value": 1
+        },
+        {
+          "kind": "attribute",
+          "selector": "button",
+          "name": "type",
+          "value": "submit"
+        },
+        {
+          "kind": "count",
+          "selector": "ul#quotes",
+          "value": 1
+        }
+      ],
+      "mutations": [],
+      "required": true,
+      "narration": [
+        {
+          "action": "say",
+          "target": "problem",
+          "text": "h1에 `명언 등록`을 표시하세요.\nlabel `명언`을 id=content 입력에 연결하세요.\nlabel `작가`를 id=author 입력에 연결하세요.\n`등록` submit 버튼과 목록 ul#quotes를 만드세요."
+        },
+        {
+          "action": "say",
+          "target": "editor",
+          "text": "조심하세요. 실행 성공과 모든 검사 통과는 달라요. 단계마다 결과를 확인해요."
+        },
+        {
+          "action": "set_code",
+          "code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style></style>\n<body><!-- mq3-build-here --></body></html>\n",
+          "say": "문서와 스타일을 먼저 준비해요. 본문은 작은 조각으로 채워요."
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "본문이 비어 있는 화면이에요. 요소와 이벤트를 차례로 넣어요."
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "\n<!-- 문서의 목적을 제목으로 알려줘요. -->\n<main><h1>명언 등록</h1>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "<form>\n  <!-- label과 id를 연결하면 클릭과 키보드 사용을 도와줘요. -->\n  <label for=\"content\">명언</label><input id=\"content\" required>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "  <label for=\"author\">작가</label><input id=\"author\" required>\n  <button type=\"submit\">등록</button>\n</form><ul id=\"quotes\"></ul></main>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": ""
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "완성한 화면을 확인하세요. 입력과 버튼도 직접 사용해보세요."
+        }
+      ],
+      "source_hash": "75e4359819899913ad55e1f5bd917318cfedde1e2365032b6c2d0dfcc72b37f3"
+    },
+    {
+      "id": "responsive-grid",
+      "title": "폭에 따라 달라지는 카드 배치",
+      "goal": "main.cards 안에 article.card 세 개를 만드세요.\n800px 이상에서는 grid 3열이에요.\n그보다 작으면 1열이에요. gap은 16px이에요.",
+      "language": "web",
+      "entry_file": "index.html",
+      "starter_code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style></style>\n<body>\n<main class=\"cards\"></main>\n</body></html>\n",
+      "solution": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n/* 작은 화면을 기본값으로 둬요. */\n* { box-sizing:border-box; }\n.cards { display:grid; grid-template-columns:1fr; gap:16px; }\n/* 넓은 화면에서만 세 열로 바꿔요. */\n@media(min-width:800px) { .cards { grid-template-columns:repeat(3,1fr); } }\n.card { padding:16px; border:1px solid #777; }\n</style>\n<body>\n<!-- 반복되는 항목은 같은 카드 클래스를 사용해요. -->\n<main class=\"cards\"><article class=\"card\">Git</article>\n<article class=\"card\">Java</article><article class=\"card\">React</article></main>\n</body></html>\n",
+      "files": {},
+      "tests": [],
+      "web_checks": [
+        {
+          "kind": "count",
+          "selector": "article.card",
+          "value": 3
+        },
+        {
+          "kind": "css",
+          "selector": ".cards",
+          "property": "display",
+          "value": "grid"
+        },
+        {
+          "kind": "css",
+          "selector": ".cards",
+          "property": "gap",
+          "value": "16px"
+        },
+        {
+          "kind": "viewport",
+          "width": 600,
+          "height": 800
+        },
+        {
+          "kind": "css",
+          "selector": ".cards",
+          "property": "gridTemplateColumns",
+          "value": "584px"
+        },
+        {
+          "kind": "viewport",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "kind": "css",
+          "selector": ".cards",
+          "property": "gridTemplateColumns",
+          "value": "384px 384px 384px"
+        }
+      ],
+      "mutations": [],
+      "required": true,
+      "narration": [
+        {
+          "action": "say",
+          "target": "problem",
+          "text": "main.cards 안에 article.card 세 개를 만드세요.\n800px 이상에서는 grid 3열이에요.\n그보다 작으면 1열이에요. gap은 16px이에요."
+        },
+        {
+          "action": "say",
+          "target": "editor",
+          "text": "조심하세요. 실행 성공과 모든 검사 통과는 달라요. 단계마다 결과를 확인해요."
+        },
+        {
+          "action": "set_code",
+          "code": "<!doctype html>\n<html lang=\"ko\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n/* 작은 화면을 기본값으로 둬요. */\n* { box-sizing:border-box; }\n.cards { display:grid; grid-template-columns:1fr; gap:16px; }\n/* 넓은 화면에서만 세 열로 바꿔요. */\n@media(min-width:800px) { .cards { grid-template-columns:repeat(3,1fr); } }\n.card { padding:16px; border:1px solid #777; }\n</style>\n<body><!-- mq3-build-here --></body></html>\n",
+          "say": "문서와 스타일을 먼저 준비해요. 본문은 작은 조각으로 채워요."
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "본문이 비어 있는 화면이에요. 요소와 이벤트를 차례로 넣어요."
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "\n<!-- 반복되는 항목은 같은 카드 클래스를 사용해요. -->\n<main class=\"cards\"><article class=\"card\">Git</article>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": "<article class=\"card\">Java</article><article class=\"card\">React</article></main>\n<!-- mq3-build-here -->"
+        },
+        {
+          "action": "patch_code",
+          "before": "<!-- mq3-build-here -->",
+          "after": ""
+        },
+        {
+          "action": "run"
+        },
+        {
+          "action": "say",
+          "target": "output",
+          "text": "완성한 화면을 확인하세요. 입력과 버튼도 직접 사용해보세요."
+        }
+      ],
+      "source_hash": "18474c515c68ccfdf98dba9445ee96f87db258906d9960b43780d49746892205"
+    }
+  ]
+}
